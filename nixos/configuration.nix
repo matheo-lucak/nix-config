@@ -99,19 +99,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.matska = {
-    isNormalUser = true;
-    description = "matska";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      zsh
-    ];
-    shell = pkgs.zsh;
-  };
-
-  # Just in case ...
-  users.defaultUserShell = pkgs.zsh;
 
   # Install firefox.
   programs.firefox.enable = true;

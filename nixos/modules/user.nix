@@ -5,7 +5,7 @@
   users = {
     defaultUserShell = pkgs.zsh;
 
-    users.amper = {
+    users.matska = {
       isNormalUser = true;
       description = "matska";
       extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
