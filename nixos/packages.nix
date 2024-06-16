@@ -13,6 +13,10 @@
     # Coding stuff
     gnumake
     gcc
+    clang-tools
+    clang
+    rustup
+    vscode
 
     # CLI utils
     tree
