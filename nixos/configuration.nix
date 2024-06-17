@@ -100,6 +100,8 @@
     home-manager
     zsh
     git
+    gnome.gnome-tweaks
+    gnome.gnome-terminal
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
