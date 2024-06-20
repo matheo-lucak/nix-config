@@ -16,6 +16,7 @@
     clang-tools
     clang
     rustup
+    python312
     vscode
 
     # CLI utils
