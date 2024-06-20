@@ -2,11 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, fetchTarball, ... }:
 
+let
+# add unstable channel declaratively
+  hardwareFramework = builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixos-hardware/archive/master.tar.gz";
+    sha256 = "sha256:15gz0xr2zs5fr3jxwbc3f5lhp2x626jghlzvp270hr4xny8vzr8k";
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
+      (import "${hardwareFramework}/framework/16-inch/7040-amd")
       ./hardware-configuration.nix
       ./packages.nix
       ./modules/bundle.nix
@@ -73,13 +81,16 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
+
+  # Powermanagement
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+  };
+
+  # Enable thermal data
+  services.thermald.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
