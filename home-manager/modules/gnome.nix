@@ -71,6 +71,17 @@
       binding = "<Shift><Super>r";
     };
 
+    "org/gnome/mutter" = {
+      dynamic-workspaces = false;
+      workspaces-only-on-primary = true;
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      num-workspaces = 4;
+    };
+
+    "org/gnome/shell/app-switcher" = {
+      current-workspace-only = true;
+    };
     "org/gnome/mutter/keybindings" = {
       # Modify window tiling
       toggle-tiled-left = ["<Control><Super>Left"];
